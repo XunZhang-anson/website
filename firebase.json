@@ -1,6 +1,7 @@
 {
   "hosting": {
-    "public": "public",
+    "site": "xunzhang",
+    "public": "build/web",
     "ignore": [
       "firebase.json",
       "**/.*",
