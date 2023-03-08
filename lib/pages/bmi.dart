@@ -94,8 +94,10 @@ class _BMIPageState extends State<BMIPage> {
         _result = '過重';
       } else if (_bmi >= 29.9 && _bmi < 34.9) {
         _result = '肥胖';
-      } else if (_bmi >= 34.9) {
+      } else if (_bmi >= 34.9 && _bmi < 100) {
         _result = '非常肥胖';
+      } else if (_bmi >= 100) {
+        _result = '胖到走路可能要用滾的';
       }
     });
   }
