@@ -20,7 +20,9 @@ class MyApp extends StatelessWidget {
       title: 'Website of XunZhang',
       theme: ThemeData(
         useMaterial3: true,
-        fontFamily: 'ShantellSans'
+        fontFamily: 'ShantellSans',
+        fontFamilyFallback: const ['ChenYuluoyan'],
+        brightness: Brightness.dark,
       ),
       home: const MyHomePage(title: 'Website of XunZhang'),
     );
@@ -40,33 +42,45 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/bmi');
-              },
-              icon: const Icon(Icons.calculate),
-              label: const Text('BMI'),
-            ),
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/speed');
-              },
-              icon: const Icon(Icons.calculate),
-              label: const Text('Speed'),
-            ),
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
+        appBar: AppBar(
+          title: Text(widget.title),
         ),
-      ),
-    );
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/background.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('我是勳章\n這是一個包含各式各樣的工具與小遊戲的網頁\n祝你用得愉快', style: Theme.of(context).textTheme.headlineLarge, textAlign: TextAlign.center),
+              const SizedBox(height: 20),
+              Wrap(
+                spacing: 20,
+                runSpacing: 20,
+                alignment: WrapAlignment.center,
+                children: <Widget>[
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/bmi');
+                    },
+                    icon: const Icon(Icons.calculate),
+                    label: const Text('BMI'),
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/speed');
+                    },
+                    icon: const Icon(Icons.calculate),
+                    label: const Text('Speed'),
+                  ),
+                ],
+              ),
+            ],
+          )),
+        ));
   }
 }
