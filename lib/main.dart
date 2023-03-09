@@ -17,11 +17,12 @@ class MyApp extends StatelessWidget {
         '/bmi': (context) => const BMIPage(),
         '/speed': (context) => const SpeedPage(),
       },
-      title: 'XunZhang\'s website',
+      title: 'Website of XunZhang',
       theme: ThemeData(
         useMaterial3: true,
+        fontFamily: 'ShantellSans'
       ),
-      home: const MyHomePage(title: 'XunZhang\'s website'),
+      home: const MyHomePage(title: 'Website of XunZhang'),
     );
   }
 }

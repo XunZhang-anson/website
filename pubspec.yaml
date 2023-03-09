@@ -19,3 +19,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+      - assets/images/
+  fonts:
+  - family: RubikIso
+    fonts:
+      - asset: assets/fonts/RubikIso-Regular.ttf
+  - family: ShantellSans
+    fonts:
+      - asset: assets/fonts/ShantellSans-Regular.ttf

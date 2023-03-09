@@ -18,18 +18,18 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="XunZhang's Personal Website">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="website">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="apple-touch-icon" href="icons/logo_192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="icons/logo_32.png"/>
 
-  <title>website</title>
+  <title>Website of XunZhang</title>
   <link rel="manifest" href="manifest.json">
 
   <script>
@@ -38,8 +38,49 @@
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
+  <style>
+    .container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      /* Default Axis is X*/
+      justify-content: center;
+      /* Main Axis */
+      align-items: center;
+      /* Cross Axis */
+    }
+
+    .indicator {
+      width: 50vw;
+    }
+
+    .flutter-loader {
+      display: none;
+    }
+
+    html,
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+  
+    @media (prefers-color-scheme: light) {
+      body {
+        background: #FCFCFC;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #272727;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div id="loading_indicator" class="container">
+    <embed class="indicator" src="load.svg" />
+  </div>
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
