@@ -78,6 +78,14 @@ class _BMIPageState extends State<BMIPage> {
   }
 
   void _calculate() {
+    if (RegExp(r'^[0-9]+$').hasMatch(_heightController.text) == false ||
+        RegExp(r'^[0-9]+$').hasMatch(_weightController.text) == false) {
+      setState(() {
+        _bmi = 0.0;
+        _result = '';
+      });
+      return;
+    }
     if (_heightController.text.isEmpty || _weightController.text.isEmpty) {
       setState(() {
         _bmi = 0.0;
