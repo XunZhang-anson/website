@@ -143,6 +143,14 @@ class _SpeedPageState extends State<SpeedPage> {
   }
 
   void _calculate() {
+    if (RegExp(r'^[0-9]+$').hasMatch(_distanceController.text) == false ||
+        RegExp(r'^[0-9]+$').hasMatch(_timeController.text) == false) {
+      setState(() {
+        _speed = 0.0;
+        _speed2 = 0.0;
+      });
+      return;
+    }
     if (_distanceController.text.isEmpty || _timeController.text.isEmpty) {
       return;
     }
