@@ -12,7 +12,7 @@ class _SpeedPageState extends State<SpeedPage> {
   final TextEditingController _timeController = TextEditingController();
   double _speed = 0.0;
   double _speed2 = 0.0;
-  String _result = '';
+  /* String _result = '';*/
   String dropdownValue = '公尺';
   String dropdownValue2 = '秒';
 
@@ -35,6 +35,9 @@ class _SpeedPageState extends State<SpeedPage> {
                   child: TextField(
                     controller: _distanceController,
                     keyboardType: TextInputType.number,
+                    onChanged: (value) {
+                      _calculate();
+                    },
                     decoration: const InputDecoration(
                       labelText: '距離',
                       hintText: '請輸入距離',
@@ -57,6 +60,7 @@ class _SpeedPageState extends State<SpeedPage> {
                       setState(() {
                         dropdownValue = newValue!;
                       });
+                      _calculate();
                     },
                     items: <String>['公尺', '公里', '公分']
                         .map<DropdownMenuItem<String>>((String value) {
@@ -76,6 +80,9 @@ class _SpeedPageState extends State<SpeedPage> {
                   child: TextField(
                     controller: _timeController,
                     keyboardType: TextInputType.number,
+                    onChanged: (value) {
+                      _calculate();
+                    },
                     decoration: const InputDecoration(
                       labelText: '時間',
                       hintText: '請輸入時間',
@@ -98,6 +105,7 @@ class _SpeedPageState extends State<SpeedPage> {
                         setState(() {
                           dropdownValue2 = newValue!;
                         });
+                        _calculate();
                       },
                       items: <String>['秒', '分鐘', '小時']
                           .map<DropdownMenuItem<String>>((String value) {
@@ -110,14 +118,24 @@ class _SpeedPageState extends State<SpeedPage> {
               ],
             ),
             const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: _calculate,
-              child: const Text('Calculate'),
-            ),
-            const SizedBox(height: 16.0),
-            Text('$_speed公尺/秒'),
-            Text('$_speed2公里/小時'),
-            Text('$_result'),
+            Offstage(
+                offstage: _speed == 0.0,
+                child: Wrap(
+                  spacing: 8.0,
+                  runSpacing: 8.0,
+                  alignment: WrapAlignment.center,
+                  children: [
+                    Chip(
+                        label: Text('${_speed.toStringAsFixed(2)}公尺/秒',
+                            style: TextStyle(fontSize: 24.0))),
+                    Chip(
+                        label: Text('${_speed2.toStringAsFixed(2)}公里/小時',
+                            style: TextStyle(fontSize: 24.0))),
+                    /*Chip(
+                        label:
+                            Text('$_result', style: TextStyle(fontSize: 24.0))),*/
+                  ],
+                ))
           ],
         ),
       ),
@@ -125,16 +143,19 @@ class _SpeedPageState extends State<SpeedPage> {
   }
 
   void _calculate() {
+    if (_distanceController.text.isEmpty || _timeController.text.isEmpty) {
+      return;
+    }
     double distance = double.parse(_distanceController.text);
     double time = double.parse(_timeController.text);
     if (dropdownValue == '公里') {
       distance = distance * 1000;
-    } else if(dropdownValue == '公分') {
+    } else if (dropdownValue == '公分') {
       distance = distance / 100;
     }
     if (dropdownValue2 == '分鐘') {
       time = time * 60;
-    } else if(dropdownValue2 == '小時') {
+    } else if (dropdownValue2 == '小時') {
       time = time * 3600;
     }
     setState(() {
