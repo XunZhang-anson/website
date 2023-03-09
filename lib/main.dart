@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         fontFamily: 'ShantellSans',
-        fontFamilyFallback: const ['ChenYuluoyan'],
+        fontFamilyFallback: const ['KleeOne'],
         brightness: Brightness.dark,
       ),
       home: const MyHomePage(title: 'Website of XunZhang'),

@@ -28,6 +28,6 @@ flutter:
   - family: ShantellSans
     fonts:
       - asset: assets/fonts/ShantellSans-Regular.ttf
-  - family: ChenYuluoyan
+  - family: KleeOne
     fonts:
-      - asset: assets/fonts/ChenYuluoyan-Thin.ttf
+      - asset: assets/fonts/KleeOne-Regular.ttf

@@ -19,7 +19,8 @@ class _BMIPageState extends State<BMIPage> {
       appBar: AppBar(
         title: const Text('BMI'),
       ),
-      body: Center(
+      body: SingleChildScrollView(
+        child: Center(
           child: Container(
         constraints: BoxConstraints(
           maxWidth: 640.0,
@@ -28,6 +29,7 @@ class _BMIPageState extends State<BMIPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Image.asset('assets/images/BMIimage.png'),
             Card(
                 child: Container(
                     padding: const EdgeInsets.all(16.0),
@@ -63,14 +65,15 @@ class _BMIPageState extends State<BMIPage> {
                 runSpacing: 8.0,
                 alignment: WrapAlignment.center,
                 children: [
-                  Chip(label: Text('BMI: ${_bmi.toStringAsFixed(2)}')),
-                  Chip(label: Text('$_result')),
+                  Chip(label: Text('BMI: ${_bmi.toStringAsFixed(2)}',style: TextStyle(fontSize: 24.0))),
+                  Chip(label: Text('$_result',style: TextStyle(fontSize: 24.0))),
                 ],
               ),
             )
           ],
         ),
       )),
+      )
     );
   }
 
@@ -90,13 +93,14 @@ class _BMIPageState extends State<BMIPage> {
         _result = '過輕';
       } else if (_bmi >= 18.5 && _bmi < 24.9) {
         _result = '正常';
-      } else if (_bmi >= 24.9 && _bmi < 29.9) {
+      } else if (_bmi >= 24.9 && _bmi < 100) {
         _result = '過重';
-      } else if (_bmi >= 29.9 && _bmi < 34.9) {
+      } /*else if (_bmi >= 29.9 && _bmi < 34.9) {
         _result = '肥胖';
       } else if (_bmi >= 34.9 && _bmi < 100) {
         _result = '非常肥胖';
-      } else if (_bmi >= 100) {
+      } */
+      else if (_bmi >= 100) {
         _result = '胖到走路可能要用滾的';
       }
     });
