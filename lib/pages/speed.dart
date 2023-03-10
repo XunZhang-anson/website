@@ -33,7 +33,7 @@ class _SpeedPageState extends State<SpeedPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(16.0),
                     child: Image.asset('assets/images/speedimage.png',
                         width: 300, height:300)),
                 const SizedBox(height: 16.0),

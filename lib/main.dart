@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'pages/bmi.dart';
 import 'pages/speed.dart';
 
@@ -56,7 +56,35 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('我是勳章\n這是一個包含各式各樣的工具與小遊戲的網頁\n祝你用得愉快', style: Theme.of(context).textTheme.headlineLarge, textAlign: TextAlign.center),
+              Container(
+                constraints: const BoxConstraints(
+                  minHeight: 120.0,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('我是',
+                        style: Theme.of(context).textTheme.headlineLarge,
+                        textAlign: TextAlign.center),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      constraints: const BoxConstraints(
+                        minWidth: 160.0,
+                      ),
+                      child: AnimatedTextKit(
+                        isRepeatingAnimation: true,
+                        animatedTexts: [
+                          RotateAnimatedText('XunZhang',textStyle: Theme.of(context).textTheme.headlineLarge,),
+                          RotateAnimatedText('勳章',textStyle: Theme.of(context).textTheme.headlineLarge,),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Text('這是一個包含各式各樣的工具與小遊戲的網頁\n祝你用得愉快',
+                  style: Theme.of(context).textTheme.headlineLarge,
+                  textAlign: TextAlign.center),
               const SizedBox(height: 20),
               Wrap(
                 spacing: 20,
