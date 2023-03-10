@@ -39,22 +39,26 @@ class _SpeedPageState extends State<SpeedPage> {
                       _calculate();
                     },
                     decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(16.0)),
+                      ),
                       labelText: '距離',
                       hintText: '請輸入距離',
                     ),
                   ),
                 ),
+                const SizedBox(width: 16.0),
                 Expanded(
                   flex: 1,
-                  child: DropdownButton<String>(
+                  child: DropdownButtonFormField<String>(
                     value: dropdownValue,
                     icon: const Icon(Icons.arrow_downward),
                     iconSize: 24,
                     elevation: 16,
-                    style: const TextStyle(color: Colors.deepPurple),
-                    underline: Container(
-                      height: 2,
-                      color: Colors.deepPurpleAccent,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                      ),
                     ),
                     onChanged: (String? newValue) {
                       setState(() {
@@ -73,6 +77,7 @@ class _SpeedPageState extends State<SpeedPage> {
                 )
               ],
             ),
+            const SizedBox(height: 16.0),
             Row(
               children: [
                 Expanded(
@@ -84,22 +89,27 @@ class _SpeedPageState extends State<SpeedPage> {
                       _calculate();
                     },
                     decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(16.0)),
+                      ),
                       labelText: '時間',
                       hintText: '請輸入時間',
                     ),
                   ),
                 ),
+                const SizedBox(width: 16.0),
                 Expanded(
                     flex: 1,
-                    child: DropdownButton<String>(
+                    child: DropdownButtonFormField<String>(
                       value: dropdownValue2,
                       icon: const Icon(Icons.arrow_downward),
                       iconSize: 24,
                       elevation: 16,
-                      style: const TextStyle(color: Colors.deepPurple),
-                      underline: Container(
-                        height: 2,
-                        color: Colors.deepPurpleAccent,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(30.0)),
+                        ),
                       ),
                       onChanged: (String? newValue) {
                         setState(() {
