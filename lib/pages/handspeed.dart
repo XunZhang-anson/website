@@ -19,12 +19,12 @@ class _HandspeedPageState extends State<HandspeedPage> {
         ),
         body: SingleChildScrollView(
           child: Center(
-            child: Container(
-              constraints: BoxConstraints(
-                maxWidth: 640.0,
-              ),
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
+              child: Container(
+            constraints: BoxConstraints(
+              maxWidth: 640.0,
+            ),
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 ClipRRect(
@@ -37,31 +37,29 @@ class _HandspeedPageState extends State<HandspeedPage> {
                   width: 300,
                   height: 100,
                   child: ElevatedButton(
-                  child: Text("快速的點擊我吧",
-                      style: TextStyle(fontSize: 30.0)),
-                  onPressed: () {
-                    setState(() {
-                      if (counter == 0) {
-                        counter++;
-                        Timer(Duration(seconds: 5), () {
-                          counter = -1;
-                        });
-                      } else if (counter > 0) {
-                        counter++;
-                      }
-                      if (counter >= maxcounter) {
+                    child: Text("快速的點擊我吧", style: TextStyle(fontSize: 30.0)),
+                    onPressed: () {
+                      setState(() {
+                        if (counter == 0) {
+                          counter++;
+                          Timer(Duration(seconds: 5), () {
+                            counter = -1;
+                          });
+                        } else if (counter > 0) {
+                          counter++;
+                        }
+                        if (counter >= maxcounter) {
                           maxcounter = counter;
                           speed = (5 / maxcounter);
                         }
-                    });
-                  },
-                ),
+                      });
+                    },
+                  ),
                 ),
                 const SizedBox(height: 16.0),
                 if (counter == -1)
                   ElevatedButton(
-                    child: Text("重新開始",
-                        style: TextStyle(fontSize: 24.0)),
+                    child: Text("重新開始", style: TextStyle(fontSize: 24.0)),
                     onPressed: () {
                       setState(() {
                         counter = 0;
@@ -87,9 +85,7 @@ class _HandspeedPageState extends State<HandspeedPage> {
                 ),
               ],
             ),
-            )
-            
-          ),
+          )),
         ));
   }
 }
