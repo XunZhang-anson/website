@@ -45,8 +45,8 @@ class _HandspeedPageState extends State<HandspeedPage> {
                         : () {
                             if (!isStart || !isComplete) {
                               isStart = true;
-                              timer = Timer(Duration(seconds: 5), () {
-                                setState(() {
+                              setState(() {
+                                timer = Timer(Duration(seconds: 5), () {
                                   isComplete = true;
                                   isStart = false;
                                 });
@@ -70,7 +70,6 @@ class _HandspeedPageState extends State<HandspeedPage> {
                       setState(() {
                         counter = 0;
                         isComplete = false;
-                        timer!.cancel();
                       });
                     },
                   ),
@@ -95,5 +94,11 @@ class _HandspeedPageState extends State<HandspeedPage> {
             ),
           )),
         ));
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
   }
 }
