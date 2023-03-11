@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'pages/bmi.dart';
 import 'pages/speed.dart';
+import 'pages/handspeed.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/bmi': (context) => const BMIPage(),
         '/speed': (context) => const SpeedPage(),
+        '/handspeed': (context) => const HandspeedPage(),
       },
       title: 'Website of XunZhang',
       theme: ThemeData(
@@ -104,6 +106,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     icon: const Icon(Icons.calculate),
                     label: const Text('Speed'),
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/handspeed');
+                    },
+                    icon: const Icon(Icons.sports_esports),
+                    label: const Text('Handspeed'),
                   ),
                 ],
               ),
