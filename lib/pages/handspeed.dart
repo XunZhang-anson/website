@@ -10,7 +10,9 @@ class HandspeedPage extends StatefulWidget {
 
 class _HandspeedPageState extends State<HandspeedPage> {
   int counter = 0, maxcounter = 0;
+  bool isStart = false, isComplete = false;
   double speed = 0.0;
+  Timer? timer;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,31 +40,37 @@ class _HandspeedPageState extends State<HandspeedPage> {
                   height: 100,
                   child: ElevatedButton(
                     child: Text("快速的點擊我吧", style: TextStyle(fontSize: 30.0)),
-                    onPressed: () {
-                      setState(() {
-                        if (counter == 0) {
-                          counter++;
-                          Timer(Duration(seconds: 5), () {
-                            counter = -1;
-                          });
-                        } else if (counter > 0) {
-                          counter++;
-                        }
-                        if (counter >= maxcounter) {
-                          maxcounter = counter;
-                          speed = (5 / maxcounter);
-                        }
-                      });
-                    },
+                    onPressed: isComplete
+                        ? null
+                        : () {
+                            if (!isStart || !isComplete) {
+                              isStart = true;
+                              timer = Timer(Duration(seconds: 5), () {
+                                setState(() {
+                                  isComplete = true;
+                                  isStart = false;
+                                });
+                              });
+                            }
+                            setState(() {
+                              counter++;
+                              speed = (5 / counter);
+                            });
+                            if (counter >= maxcounter) {
+                              maxcounter = counter;
+                            }
+                          },
                   ),
                 ),
                 const SizedBox(height: 16.0),
-                if (counter == -1)
+                if (isComplete)
                   ElevatedButton(
                     child: Text("重新開始", style: TextStyle(fontSize: 24.0)),
                     onPressed: () {
                       setState(() {
                         counter = 0;
+                        isComplete = false;
+                        timer!.cancel();
                       });
                     },
                   ),
@@ -79,7 +87,7 @@ class _HandspeedPageState extends State<HandspeedPage> {
                         label: Text('最多${maxcounter}次',
                             style: TextStyle(fontSize: 24.0))),
                     Chip(
-                        label: Text('最快平均${speed.toStringAsFixed(4)}秒/次',
+                        label: Text('平均${speed.toStringAsFixed(4)}秒/次',
                             style: TextStyle(fontSize: 24.0))),
                   ],
                 ),
