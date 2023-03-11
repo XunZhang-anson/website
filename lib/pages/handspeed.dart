@@ -10,6 +10,7 @@ class HandspeedPage extends StatefulWidget {
 
 class _HandspeedPageState extends State<HandspeedPage> {
   int counter = 0, maxcounter = 0;
+  double speed = 0.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +36,7 @@ class _HandspeedPageState extends State<HandspeedPage> {
                     counter++;
                     if (counter > maxcounter) {
                       maxcounter = counter;
+                      speed = (5/maxcounter);
                     }
                   }
                 });
@@ -61,6 +63,9 @@ class _HandspeedPageState extends State<HandspeedPage> {
                         style: TextStyle(fontSize: 24.0))),
                 Chip(
                     label: Text('最多${maxcounter}次',
+                        style: TextStyle(fontSize: 24.0))),
+                        Chip(
+                    label: Text('平均${speed.toStringAsFixed(2)}秒/次',
                         style: TextStyle(fontSize: 24.0))),
               ],
             ),
