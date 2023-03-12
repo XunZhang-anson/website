@@ -3,8 +3,10 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'pages/bmi.dart';
 import 'pages/speed.dart';
 import 'pages/handspeed.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 
 void main() {
+  usePathUrlStrategy();
   runApp(const MyApp());
 }
 
