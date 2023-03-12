@@ -13,6 +13,7 @@ class _GuessNumberPageState extends State<GuessNumberPage> {
   int? _guessNumber;
   int _guessesLeft = 5;
   String? _hintText;
+  bool isstop = false;
   TextEditingController _textEditingController = TextEditingController();
 
   @override
@@ -38,6 +39,7 @@ class _GuessNumberPageState extends State<GuessNumberPage> {
         _guessNumber = guess;
         _guessesLeft--;
         if (_guessNumber == _targetNumber) {
+          isstop = true;
           showDialog(
             context: context,
             builder: (BuildContext context) {
@@ -50,6 +52,7 @@ class _GuessNumberPageState extends State<GuessNumberPage> {
                     onPressed: () {
                       _startNewGame();
                       Navigator.of(context).pop();
+                      isstop = false;
                     },
                     child: Text('重新開始'),
                   ),
@@ -62,7 +65,7 @@ class _GuessNumberPageState extends State<GuessNumberPage> {
         } else {
           _hintText = '猜得太高 再試試看吧 還剩${_guessesLeft}次機會';
         }
-        if (_guessesLeft == 0) {
+        if (_guessesLeft == 0 && isstop == false) {
           showDialog(
             context: context,
             builder: (BuildContext context) {
