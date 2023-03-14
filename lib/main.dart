@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 constraints: BoxConstraints(
                   maxWidth: 640,
                 ),
-                child: Expanded(
+                
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center, 
@@ -204,7 +204,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               )),
                         )
                       ]),
-                ),
+                
               ),
             ),
           ),
