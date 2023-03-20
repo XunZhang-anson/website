@@ -3,7 +3,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'pages/bmi.dart';
 import 'pages/speed.dart';
 import 'pages/handspeed.dart';
-import 'pages/drowlots.dart';
+/*import 'pages/drowlots.dart';*/
 import 'pages/clickcolor.dart';
 import 'pages/guessnumber.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         '/bmi': (context) => const BMIPage(),
         '/speed': (context) => const SpeedPage(),
         '/handspeed': (context) => const HandspeedPage(),
-        '/drowlots': (context) => const drowlotsPage(),
+        /*'/drowlots': (context) => const drowlotsPage(),*/
         '/clickcolor': (context) => const ClickcolorPage(),
         '/guessnumber': (context) => const GuessNumberPage(),
       },
@@ -134,29 +134,29 @@ class _MyHomePageState extends State<MyHomePage> {
                                     Navigator.pushNamed(context, '/bmi');
                                   },
                                   icon: const Icon(Icons.calculate),
-                                  label: const Text('BMI'),
+                                  label: const Text('BMI計算'),
                                 ),
                                 ElevatedButton.icon(
                                   onPressed: () {
                                     Navigator.pushNamed(context, '/speed');
                                   },
                                   icon: const Icon(Icons.calculate),
-                                  label: const Text('Speed'),
+                                  label: const Text('速度運算'),
                                 ),
                                 ElevatedButton.icon(
                                   onPressed: () {
                                     Navigator.pushNamed(context, '/handspeed');
                                   },
                                   icon: const Icon(Icons.sports_esports),
-                                  label: const Text('Handspeed'),
+                                  label: const Text('手速挑戰'),
                                 ),
-                                ElevatedButton.icon(
+                                /*ElevatedButton.icon(
                                   onPressed: () {
                                     Navigator.pushNamed(context, '/drowlots');
                                   },
                                   icon: const Icon(Icons.sports_esports),
-                                  label: const Text('Drowlots'),
-                                ),
+                                  label: const Text('抽籤'),
+                                ),*/
                               ],
                             ),
                           ]),
@@ -188,7 +188,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                               context, '/clickcolor');
                                         },
                                         icon: const Icon(Icons.sports_esports),
-                                        label: const Text('Clickcolor'),
+                                        label: const Text('點擊方塊'),
                                       ),
                                       ElevatedButton.icon(
                                         onPressed: () {
@@ -196,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                               context, '/guessnumber');
                                         },
                                         icon: const Icon(Icons.sports_esports),
-                                        label: const Text('Guessnumber'),
+                                        label: const Text('猜數字'),
                                       ),
                                     ],
                                   ),
