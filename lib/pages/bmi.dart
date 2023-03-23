@@ -78,8 +78,8 @@ class _BMIPageState extends State<BMIPage> {
   }
 
   void _calculate() {
-    if (RegExp(r'^[0-9]+$').hasMatch(_heightController.text) == false ||
-        RegExp(r'^[0-9]+$').hasMatch(_weightController.text) == false) {
+    if (RegExp(r'^[0-9]+(\.[0-9]+)?$').hasMatch(_heightController.text) == false ||
+        RegExp(r'^[0-9]+(\.[0-9]+)?$').hasMatch(_weightController.text) == false) {
       setState(() {
         _bmi = 0.0;
         _result = '';
@@ -99,9 +99,9 @@ class _BMIPageState extends State<BMIPage> {
       _bmi = weight / (height * height);
       if (_bmi < 18.5) {
         _result = '過輕';
-      } else if (_bmi >= 18.5 && _bmi < 24.9) {
+      } else if (_bmi >= 18.5 && _bmi < 24.5) {
         _result = '正常';
-      } else if (_bmi >= 24.9 && _bmi < 100) {
+      } else if (_bmi >= 24.5 && _bmi < 100) {
         _result = '過重';
       } /*else if (_bmi >= 29.9 && _bmi < 34.9) {
         _result = '肥胖';
