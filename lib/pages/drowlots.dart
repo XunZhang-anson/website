@@ -49,8 +49,9 @@ class _drowlotsPageState extends State<drowlotsPage> {
                 SizedBox(
                   width: 300,
                   height: 100,
-                  child: ElevatedButton(
-                    child: Text("點擊執行抽籤", style: TextStyle(fontSize: 30.0)),
+                  child: ElevatedButton.icon(
+                    icon: Icon(Icons.play_arrow, size: 50.0),
+                    label: Text("點擊執行抽籤", style: TextStyle(fontSize: 30.0)),
                     onPressed: () {
                       var input = _Controller1.text;
                       var inputList = input.split('\n');
