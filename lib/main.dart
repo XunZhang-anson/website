@@ -3,7 +3,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'pages/bmi.dart';
 import 'pages/speed.dart';
 import 'pages/handspeed.dart';
-/*import 'pages/drowlots.dart';*/
+import 'pages/drowlots.dart';
 import 'pages/clickcolor.dart';
 import 'pages/guessnumber.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         '/bmi': (context) => const BMIPage(),
         '/speed': (context) => const SpeedPage(),
         '/handspeed': (context) => const HandspeedPage(),
-        /*'/drowlots': (context) => const drowlotsPage(),*/
+        '/drowlots': (context) => const drowlotsPage(),
         '/clickcolor': (context) => const ClickcolorPage(),
         '/guessnumber': (context) => const GuessNumberPage(),
       },
@@ -150,13 +150,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                   icon: const Icon(Icons.sports_esports),
                                   label: const Text('手速挑戰'),
                                 ),
-                                /*ElevatedButton.icon(
+                                ElevatedButton.icon(
                                   onPressed: () {
                                     Navigator.pushNamed(context, '/drowlots');
                                   },
                                   icon: const Icon(Icons.sports_esports),
                                   label: const Text('抽籤'),
-                                ),*/
+                                ),
                               ],
                             ),
                           ]),
