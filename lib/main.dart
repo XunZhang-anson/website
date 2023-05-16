@@ -7,6 +7,7 @@ import 'pages/drowlots.dart';
 import 'pages/clickcolor.dart';
 import 'pages/guessnumber.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'pages/chat.dart';
 
 void main() {
   usePathUrlStrategy();
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/drowlots': (context) => const drowlotsPage(),
         '/clickcolor': (context) => const ClickcolorPage(),
         '/guessnumber': (context) => const GuessNumberPage(),
+        '/chat': (context) => const ChatPage(),
       },
       title: 'Website of XunZhang',
       theme: ThemeData(
@@ -197,6 +199,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                         },
                                         icon: const Icon(Icons.sports_esports),
                                         label: const Text('猜數字'),
+                                      ),
+                                      ElevatedButton.icon(
+                                        onPressed: () {
+                                          Navigator.pushNamed(
+                                              context, '/chat');
+                                        },
+                                        icon: const Icon(Icons.sports_esports),
+                                        label: const Text('chat'),
                                       ),
                                     ],
                                   ),
