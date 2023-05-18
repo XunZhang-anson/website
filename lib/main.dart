@@ -8,6 +8,8 @@ import 'pages/clickcolor.dart';
 import 'pages/guessnumber.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'pages/chat.dart';
+import 'pages/countcoin.dart';
+import 'pages/countcoin1.dart';
 
 void main() {
   usePathUrlStrategy();
@@ -28,6 +30,8 @@ class MyApp extends StatelessWidget {
         '/clickcolor': (context) => const ClickcolorPage(),
         '/guessnumber': (context) => const GuessNumberPage(),
         '/chat': (context) => const ChatPage(),
+        '/countcoin': (context) => const CoinPage(),
+        '/countcoin/1': (context) => const Coin1Page(),
       },
       title: 'Website of XunZhang',
       theme: ThemeData(
@@ -158,6 +162,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                   },
                                   icon: const Icon(Icons.sports_esports),
                                   label: const Text('抽籤'),
+                                ),
+                                ElevatedButton.icon(
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, '/countcoin');
+                                  },
+                                  icon: const Icon(Icons.sports_esports),
+                                  label: const Text('數硬幣'),
                                 ),
                               ],
                             ),
