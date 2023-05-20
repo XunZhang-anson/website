@@ -8,8 +8,8 @@ environment:
 
 dependencies:
   animated_text_kit: ^4.2.2
-  audioplayers: ^3.0.1
-  chat_gpt_sdk: ^2.1.1
+  audioplayers: ^4.0.1
+  chat_gpt_sdk: ^2.1.5
   flutter:
     sdk: flutter
   flutter_web_plugins:

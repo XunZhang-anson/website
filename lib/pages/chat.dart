@@ -12,16 +12,16 @@ class _ChatPageState extends State<ChatPage> {
   // input text controller
   final TextEditingController _controller = TextEditingController();
   final openAI = OpenAI.instance.build(
-      token: 'YOUR_API_KEY',
-      baseOption: HttpSetup(receiveTimeout: const Duration(seconds: 5)),
-      isLog: true);
+      token: 'sk-',
+      baseOption: HttpSetup(receiveTimeout: const Duration(seconds: 5)),  
+      enableLog: true);
 
   List<Map<String, String>> _chat = [{}];
 
   void chat() {
     debugPrint('chat-1');
     final request = ChatCompleteText(
-        messages: _chat, maxToken: 200, model: ChatModel.chatGptTurboModel);
+        messages: _chat, maxToken: 200, model: ChatModel.gptTurbo);
     debugPrint('chat-2');
     openAI.onChatCompletionSSE(request: request).listen((data) {
       debugPrint('chat-3');
