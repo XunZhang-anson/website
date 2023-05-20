@@ -3,10 +3,13 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'pages/bmi.dart';
 import 'pages/speed.dart';
 import 'pages/handspeed.dart';
-/*import 'pages/drowlots.dart';*/
+import 'pages/drowlots.dart';
 import 'pages/clickcolor.dart';
 import 'pages/guessnumber.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'pages/chat.dart';
+import 'pages/countcoin.dart';
+import 'pages/countcoin1.dart';
 
 void main() {
   usePathUrlStrategy();
@@ -23,9 +26,12 @@ class MyApp extends StatelessWidget {
         '/bmi': (context) => const BMIPage(),
         '/speed': (context) => const SpeedPage(),
         '/handspeed': (context) => const HandspeedPage(),
-        /*'/drowlots': (context) => const drowlotsPage(),*/
+        '/drowlots': (context) => const drowlotsPage(),
         '/clickcolor': (context) => const ClickcolorPage(),
         '/guessnumber': (context) => const GuessNumberPage(),
+        '/chat': (context) => const ChatPage(),
+        '/countcoin': (context) => const CoinPage(),
+        '/countcoin/1': (context) => const Coin1Page(),
       },
       title: 'Website of XunZhang',
       theme: ThemeData(
@@ -150,13 +156,20 @@ class _MyHomePageState extends State<MyHomePage> {
                                   icon: const Icon(Icons.sports_esports),
                                   label: const Text('手速挑戰'),
                                 ),
-                                /*ElevatedButton.icon(
+                                ElevatedButton.icon(
                                   onPressed: () {
                                     Navigator.pushNamed(context, '/drowlots');
                                   },
                                   icon: const Icon(Icons.sports_esports),
                                   label: const Text('抽籤'),
-                                ),*/
+                                ),
+                                ElevatedButton.icon(
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, '/countcoin');
+                                  },
+                                  icon: const Icon(Icons.sports_esports),
+                                  label: const Text('數硬幣'),
+                                ),
                               ],
                             ),
                           ]),
@@ -197,6 +210,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                         },
                                         icon: const Icon(Icons.sports_esports),
                                         label: const Text('猜數字'),
+                                      ),
+                                      ElevatedButton.icon(
+                                        onPressed: () {
+                                          Navigator.pushNamed(
+                                              context, '/chat');
+                                        },
+                                        icon: const Icon(Icons.sports_esports),
+                                        label: const Text('chat'),
                                       ),
                                     ],
                                   ),
