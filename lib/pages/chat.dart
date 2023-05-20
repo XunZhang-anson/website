@@ -12,7 +12,7 @@ class _ChatPageState extends State<ChatPage> {
   // input text controller
   final TextEditingController _controller = TextEditingController();
   final openAI = OpenAI.instance.build(
-      token: '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',
+      token: 'YOUR_API_KEY',
       baseOption: HttpSetup(receiveTimeout: const Duration(seconds: 5)),
       isLog: true);
 
