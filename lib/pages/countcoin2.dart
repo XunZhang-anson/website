@@ -2,16 +2,16 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class Coin1Page extends StatefulWidget {
-  const Coin1Page({super.key});
+class Coin2Page extends StatefulWidget {
+  const Coin2Page({super.key});
 
   @override
-  State<Coin1Page> createState() => _Coin1PageState();
+  State<Coin2Page> createState() => _Coin2PageState();
 }
 
-class _Coin1PageState extends State<Coin1Page> {
+class _Coin2PageState extends State<Coin2Page> {
   int _count = 0, _number = 0;
-  bool _player = true;
+  bool _player=true,_player11 = true, _player12 = true, _player13 = true, _player14 = true , _player21 = true, _player22 = true, _player23 = true, _player24 = true;
 
   @override
   void initState() {
@@ -57,12 +57,13 @@ class _Coin1PageState extends State<Coin1Page> {
                             children: [
                               InkWell(
                                   borderRadius: BorderRadius.circular(100),
-                                  onTap: _player || _count < 1
+                                  onTap: !_player11 || _count < 1 || _player
                                       ? null
                                       : () {
                                           setState(() {
                                             _count -= 1;
-                                            _switch();
+                                            _player11 = false;
+                                            _switch();                                            
                                           });
                                         },
                                   child: Padding(
@@ -70,7 +71,7 @@ class _Coin1PageState extends State<Coin1Page> {
                                     child: Text(
                                       '1',
                                       style: TextStyle(
-                                        color: _player || _count < 1
+                                        color: _player || _count < 1 || !_player11
                                             ? Colors.black
                                             : Colors.white,
                                       ),
@@ -78,11 +79,12 @@ class _Coin1PageState extends State<Coin1Page> {
                                   )),
                               InkWell(
                                   borderRadius: BorderRadius.circular(100),
-                                  onTap: _number < 2 || _player || _count < 2
+                                  onTap: !_player12 || _player || _count < 2
                                       ? null
                                       : () {
                                           setState(() {
                                             _count -= 2;
+                                            _player12 = false;
                                             _switch();
                                           });
                                         },
@@ -91,7 +93,7 @@ class _Coin1PageState extends State<Coin1Page> {
                                     child: Text(
                                       '2',
                                       style: TextStyle(
-                                        color: _number < 2 || _player || _count < 2
+                                        color: !_player12 || _player || _count < 2
                                             ? Colors.black
                                             : Colors.white,
                                       ),
@@ -99,11 +101,12 @@ class _Coin1PageState extends State<Coin1Page> {
                                   )),
                               InkWell(
                                   borderRadius: BorderRadius.circular(100),
-                                  onTap: _number < 3 || _player || _count < 3
+                                  onTap: !_player13 || _player || _count < 3
                                       ? null
                                       : () {
                                           setState(() {
                                             _count -= 3;
+                                            _player13 = false;
                                             _switch();
                                           });
                                         },
@@ -112,7 +115,7 @@ class _Coin1PageState extends State<Coin1Page> {
                                     child: Text(
                                       '3',
                                       style: TextStyle(
-                                        color: _number < 3 || _player || _count < 3
+                                        color: !_player13 || _player || _count < 3
                                             ? Colors.black
                                             : Colors.white,
                                       ),
@@ -120,11 +123,12 @@ class _Coin1PageState extends State<Coin1Page> {
                                   )),
                               InkWell(
                                   borderRadius: BorderRadius.circular(100),
-                                  onTap: _number < 4 || _player || _count < 4
+                                  onTap: !_player14 || _player || _count < 4
                                       ? null
                                       : () {
                                           setState(() {
                                             _count -= 4;
+                                            _player14 = false;
                                             _switch();
                                           });
                                         },
@@ -133,7 +137,7 @@ class _Coin1PageState extends State<Coin1Page> {
                                     child: Text(
                                       '4',
                                       style: TextStyle(
-                                        color: _number < 4 || _player || _count < 4
+                                        color: !_player14 || _player || _count < 4
                                             ? Colors.black
                                             : Colors.white,
                                       ),
@@ -153,11 +157,12 @@ class _Coin1PageState extends State<Coin1Page> {
                             children: [
                               InkWell(
                                   borderRadius: BorderRadius.circular(100),
-                                  onTap: !_player || _count < 1
+                                  onTap: !_player || _count < 1 || !_player21
                                       ? null
                                       : () {
                                           setState(() {
                                             _count -= 1;
+                                            _player21 = false;
                                             _switch();
                                           });
                                         },
@@ -166,7 +171,7 @@ class _Coin1PageState extends State<Coin1Page> {
                                     child: Text(
                                       '1',
                                       style: TextStyle(
-                                        color: !_player || _count < 1
+                                        color: !_player || _count < 1 || !_player21
                                             ? Colors.black
                                             : Colors.white,
                                       ),
@@ -174,11 +179,12 @@ class _Coin1PageState extends State<Coin1Page> {
                                   )),
                               InkWell(
                                   borderRadius: BorderRadius.circular(100),
-                                  onTap: _number < 2 || !_player || _count < 2
+                                  onTap: !_player22 || !_player || _count < 2
                                       ? null
                                       : () {
                                           setState(() {
                                             _count -= 2;
+                                            _player22 = false;
                                             _switch();
                                           });
                                         },
@@ -187,7 +193,7 @@ class _Coin1PageState extends State<Coin1Page> {
                                     child: Text(
                                       '2',
                                       style: TextStyle(
-                                        color: _number < 2 || !_player || _count < 2
+                                        color: !_player22 || !_player || _count < 2
                                             ? Colors.black
                                             : Colors.white,
                                       ),
@@ -195,11 +201,12 @@ class _Coin1PageState extends State<Coin1Page> {
                                   )),
                               InkWell(
                                   borderRadius: BorderRadius.circular(100),
-                                  onTap: _number < 3 || !_player || _count < 3
+                                  onTap: !_player23 || !_player || _count < 3
                                       ? null
                                       : () {
                                           setState(() {
                                             _count -= 3;
+                                            _player23 = false;
                                             _switch();
                                           });
                                         },
@@ -208,7 +215,7 @@ class _Coin1PageState extends State<Coin1Page> {
                                     child: Text(
                                       '3',
                                       style: TextStyle(
-                                        color: _number < 3 ||
+                                        color: !_player23 ||
                                                 !_player ||
                                                 _count < 3
                                             ? Colors.black
@@ -218,11 +225,12 @@ class _Coin1PageState extends State<Coin1Page> {
                                   )),
                               InkWell(
                                   borderRadius: BorderRadius.circular(100),
-                                  onTap: _number < 4 || !_player || _count < 4
+                                  onTap: !_player24 || !_player || _count < 4
                                       ? null
                                       : () {
                                           setState(() {
                                             _count -= 4;
+                                            _player24 = false;
                                             _switch();
                                           });
                                         },
@@ -231,7 +239,7 @@ class _Coin1PageState extends State<Coin1Page> {
                                     child: Text(
                                       '4',
                                       style: TextStyle(
-                                        color: _number < 4 ||
+                                        color: !_player24 ||
                                                 !_player ||
                                                 _count < 4
                                             ? Colors.black
@@ -252,10 +260,16 @@ class _Coin1PageState extends State<Coin1Page> {
   }*/
 
   void _switch() {
-    if (_count > 0) {
+    if (_count > 0 && _number < 8) {
       setState(() {
         _player = !_player;
-        _number = Random().nextInt(4) + 1;
+        _number++; 
+      });
+    } else if (_count > 0 && _number > 7) {
+      setState(() {
+        _player = !_player;
+        _number = 0;
+        _player11 = true; _player12 = true; _player13 = true; _player14 = true ; _player21 = true; _player22 = true; _player23 = true; _player24 = true;
       });
     } else {
       showDialog(
@@ -267,6 +281,7 @@ class _Coin1PageState extends State<Coin1Page> {
             actions: [
               TextButton(
                 onPressed: () {
+                  _number = 0;_player11 = true; _player12 = true; _player13 = true; _player14 = true ; _player21 = true; _player22 = true; _player23 = true; _player24 = true;
                   _startNewGame();
                   Navigator.of(context).pop();
                 },

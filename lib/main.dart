@@ -10,6 +10,9 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 import 'pages/chat.dart';
 import 'pages/countcoin.dart';
 import 'pages/countcoin1.dart';
+import 'pages/countcoin2.dart';
+import 'pages/countcoin3.dart';
+
 
 void main() {
   usePathUrlStrategy();
@@ -32,6 +35,8 @@ class MyApp extends StatelessWidget {
         '/chat': (context) => const ChatPage(),
         '/countcoin': (context) => const CoinPage(),
         '/countcoin/1': (context) => const Coin1Page(),
+        '/countcoin/2': (context) => const Coin2Page(),
+        '/countcoin/3': (context) => const Coin3Page(),
       },
       title: 'Website of XunZhang',
       theme: ThemeData(
