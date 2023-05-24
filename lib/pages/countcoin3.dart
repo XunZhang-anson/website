@@ -216,8 +216,26 @@ class _Coin3PageState extends State<Coin3Page> {
                       Expanded(
                           flex: 5,
                           child: Container(
-                              child: Image.asset(
-                                  'assets/images/coin/coin$_count.png'))),
+                              child: Image.network(
+                            '/assets/assets/images/coin/coin$_count.png',
+                            loadingBuilder: (context, child, loadingProgress) {
+                              debugPrint('loadingProgress: $loadingProgress');
+                              debugPrint(
+                                  'expectedTotalBytes: ${loadingProgress?.expectedTotalBytes}');
+                              debugPrint(
+                                  'cumulativeBytesLoaded: ${loadingProgress?.cumulativeBytesLoaded}');
+                              if (loadingProgress == null) return child;
+                              return Center(
+                                child: CircularProgressIndicator(
+                                  value: loadingProgress.expectedTotalBytes !=
+                                          null
+                                      ? loadingProgress.cumulativeBytesLoaded /
+                                          loadingProgress.expectedTotalBytes!
+                                      : null,
+                                ),
+                              );
+                            },
+                          ))),
                       Expanded(
                           flex: 0,
                           child: Row(
@@ -391,20 +409,20 @@ class _Coin3PageState extends State<Coin3Page> {
         context: context,
         builder: (BuildContext context) {
           return RotatedBox(
-            quarterTurns: _player ? 0 : 2,
-          child: AlertDialog(
-            title: Text('player${!_player ? 2 : 1} win'),
-            content: Text('恭喜! 你贏了'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  _startNewGame();
-                  Navigator.of(context).pop();
-                },
-                child: Text('重新開始'),
-              ),
-            ],
-          ));
+              quarterTurns: _player ? 0 : 2,
+              child: AlertDialog(
+                title: Text('player${!_player ? 2 : 1} win'),
+                content: Text('恭喜! 你贏了'),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      _startNewGame();
+                      Navigator.of(context).pop();
+                    },
+                    child: Text('重新開始'),
+                  ),
+                ],
+              ));
         },
       );
     } else {
@@ -412,23 +430,22 @@ class _Coin3PageState extends State<Coin3Page> {
         barrierDismissible: false,
         context: context,
         builder: (BuildContext context) {
-          return 
-          RotatedBox(
-            quarterTurns: _player ? 2 : 0,
-            child: AlertDialog(
-            title: Text('player${!_player ? 1 : 2} win'),
-            content: Text('恭喜! 你贏了'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  _number = 0;
-                  _startNewGame();
-                  Navigator.of(context).pop();
-                },
-                child: Text('重新開始'),
-              ),
-            ],
-          ));
+          return RotatedBox(
+              quarterTurns: _player ? 2 : 0,
+              child: AlertDialog(
+                title: Text('player${!_player ? 1 : 2} win'),
+                content: Text('恭喜! 你贏了'),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      _number = 0;
+                      _startNewGame();
+                      Navigator.of(context).pop();
+                    },
+                    child: Text('重新開始'),
+                  ),
+                ],
+              ));
         },
       );
     }
