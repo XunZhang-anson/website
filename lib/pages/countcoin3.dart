@@ -151,6 +151,30 @@ class _Coin3PageState extends State<Coin3Page> {
                                       ),
                                     ),
                                   )),
+                              InkWell(
+                                  borderRadius: BorderRadius.circular(100),
+                                  onTap: _number == 5 || _player || _count < 5
+                                      ? null
+                                      : () {
+                                          setState(() {
+                                            _count -= 5;
+                                            _number = 5;
+                                            _switch();
+                                          });
+                                        },
+                                  child: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text(
+                                      '5',
+                                      style: TextStyle(
+                                        color: _number == 5 ||
+                                                _player ||
+                                                _count < 5
+                                            ? Colors.black
+                                            : Colors.white,
+                                      ),
+                                    ),
+                                  )),
                             ],
                           )),
                       Expanded(
@@ -259,6 +283,30 @@ class _Coin3PageState extends State<Coin3Page> {
                                       ),
                                     ),
                                   )),
+                              InkWell(
+                                borderRadius: BorderRadius.circular(100),
+                                onTap: _number == 5 || !_player || _count < 5
+                                    ? null
+                                    : () {
+                                        setState(() {
+                                          _count -= 5;
+                                          _number = 5;
+                                          _switch();
+                                        });
+                                      },
+                                child: Padding(
+                                  padding: EdgeInsets.all(10),
+                                  child: Text(
+                                    '5',
+                                    style: TextStyle(
+                                      color:
+                                          _number == 5 || !_player || _count < 5
+                                              ? Colors.black
+                                              : Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              )
                             ],
                           )),
                       // Expanded(flex: 1, child: Container(color: Colors.red)),
@@ -272,12 +320,13 @@ class _Coin3PageState extends State<Coin3Page> {
   }*/
 
   void _switch() {
-    if (_count > 0 && _number != _count || _number != 1) {
+    if (_count > 0 && (_number != _count || _count != 1)) {
       setState(() {
         _player = !_player;
       });
     } else if (_count == 1 && _number == _count) {
       showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
@@ -297,6 +346,7 @@ class _Coin3PageState extends State<Coin3Page> {
       );
     } else {
       showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
