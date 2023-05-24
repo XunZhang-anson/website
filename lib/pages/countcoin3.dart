@@ -390,7 +390,9 @@ class _Coin3PageState extends State<Coin3Page> {
         barrierDismissible: false,
         context: context,
         builder: (BuildContext context) {
-          return AlertDialog(
+          return RotatedBox(
+            quarterTurns: _player ? 0 : 2,
+          child: AlertDialog(
             title: Text('player${!_player ? 2 : 1} win'),
             content: Text('恭喜! 你贏了'),
             actions: [
@@ -402,7 +404,7 @@ class _Coin3PageState extends State<Coin3Page> {
                 child: Text('重新開始'),
               ),
             ],
-          );
+          ));
         },
       );
     } else {
@@ -410,7 +412,10 @@ class _Coin3PageState extends State<Coin3Page> {
         barrierDismissible: false,
         context: context,
         builder: (BuildContext context) {
-          return AlertDialog(
+          return 
+          RotatedBox(
+            quarterTurns: _player ? 2 : 0,
+            child: AlertDialog(
             title: Text('player${!_player ? 1 : 2} win'),
             content: Text('恭喜! 你贏了'),
             actions: [
@@ -423,7 +428,7 @@ class _Coin3PageState extends State<Coin3Page> {
                 child: Text('重新開始'),
               ),
             ],
-          );
+          ));
         },
       );
     }
