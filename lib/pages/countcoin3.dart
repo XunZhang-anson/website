@@ -23,16 +23,15 @@ class _Coin3PageState extends State<Coin3Page> {
     setState(() {
       _count = Random().nextInt(16) + 15;
       _switch();
-      /*_guessNumber = null;
-      _guessesLeft = 5;
-      _hintText = '從一個1~100猜一個數字(有5次機會)';
-      _textEditingController.clear();*/
     });
   }
 
   double mathIconWidth() {
     var width = MediaQuery.of(context).size.width;
-    return (width - 16) / 4;
+    if (width > 640) {
+      return (640 - 32) / 7;
+    }
+    return (width - 32) / 5;
   }
 
   Widget build(BuildContext context) {
@@ -52,131 +51,168 @@ class _Coin3PageState extends State<Coin3Page> {
                       // Expanded(flex: 1, child: Container(color: Colors.red)),
                       Expanded(
                           flex: 0,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              InkWell(
-                                  borderRadius: BorderRadius.circular(100),
-                                  onTap: _player || _count < 1 || _number == 1
-                                      ? null
-                                      : () {
-                                          setState(() {
-                                            _count -= 1;
-                                            _number = 1;
-                                            _switch();
-                                          });
-                                        },
-                                  child: Padding(
-                                    padding: EdgeInsets.all(10),
-                                    child: Text(
-                                      '1',
-                                      style: TextStyle(
-                                        color: _player ||
+                          child: RotatedBox(
+                              quarterTurns: 2,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    width: mathIconWidth(),
+                                    height: mathIconWidth(),
+                                    child: InkWell(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        onTap: _player ||
                                                 _count < 1 ||
                                                 _number == 1
-                                            ? Colors.black
-                                            : Colors.white,
-                                      ),
-                                    ),
-                                  )),
-                              InkWell(
-                                  borderRadius: BorderRadius.circular(100),
-                                  onTap: _number == 2 || _player || _count < 2
-                                      ? null
-                                      : () {
-                                          setState(() {
-                                            _count -= 2;
-                                            _number = 2;
-                                            _switch();
-                                          });
-                                        },
-                                  child: Padding(
-                                    padding: EdgeInsets.all(10),
-                                    child: Text(
-                                      '2',
-                                      style: TextStyle(
-                                        color: _number == 2 ||
+                                            ? null
+                                            : () {
+                                                setState(() {
+                                                  _count -= 1;
+                                                  _number = 1;
+                                                  _switch();
+                                                });
+                                              },
+                                        child: Center(
+                                          child: Text(
+                                            '1',
+                                            style: TextStyle(
+                                              color: _player ||
+                                                      _count < 1 ||
+                                                      _number == 1
+                                                  ? Colors.black
+                                                  : Colors.white,
+                                              fontSize: mathIconWidth() / 2,
+                                            ),
+                                          ),
+                                        )),
+                                  ),
+                                  SizedBox(
+                                    width: mathIconWidth(),
+                                    height: mathIconWidth(),
+                                    child: InkWell(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        onTap: _number == 2 ||
                                                 _player ||
                                                 _count < 2
-                                            ? Colors.black
-                                            : Colors.white,
-                                      ),
-                                    ),
-                                  )),
-                              InkWell(
-                                  borderRadius: BorderRadius.circular(100),
-                                  onTap: _number == 3 || _player || _count < 3
-                                      ? null
-                                      : () {
-                                          setState(() {
-                                            _count -= 3;
-                                            _number = 3;
-                                            _switch();
-                                          });
-                                        },
-                                  child: Padding(
-                                    padding: EdgeInsets.all(10),
-                                    child: Text(
-                                      '3',
-                                      style: TextStyle(
-                                        color: _number == 3 ||
+                                            ? null
+                                            : () {
+                                                setState(() {
+                                                  _count -= 2;
+                                                  _number = 2;
+                                                  _switch();
+                                                });
+                                              },
+                                        child: Center(
+                                          child: Text(
+                                            '2',
+                                            style: TextStyle(
+                                              color: _number == 2 ||
+                                                      _player ||
+                                                      _count < 2
+                                                  ? Colors.black
+                                                  : Colors.white,
+                                              fontSize: mathIconWidth() / 2,
+                                            ),
+                                          ),
+                                        )),
+                                  ),
+                                  SizedBox(
+                                    width: mathIconWidth(),
+                                    height: mathIconWidth(),
+                                    child: InkWell(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        onTap: _number == 3 ||
                                                 _player ||
                                                 _count < 3
-                                            ? Colors.black
-                                            : Colors.white,
-                                      ),
-                                    ),
-                                  )),
-                              InkWell(
-                                  borderRadius: BorderRadius.circular(100),
-                                  onTap: _number == 4 || _player || _count < 4
-                                      ? null
-                                      : () {
-                                          setState(() {
-                                            _count -= 4;
-                                            _number = 4;
-                                            _switch();
-                                          });
-                                        },
-                                  child: Padding(
-                                    padding: EdgeInsets.all(10),
-                                    child: Text(
-                                      '4',
-                                      style: TextStyle(
-                                        color: _number == 4 ||
+                                            ? null
+                                            : () {
+                                                setState(() {
+                                                  _count -= 3;
+                                                  _number = 3;
+                                                  _switch();
+                                                });
+                                              },
+                                        child: Center(
+                                          child: Text(
+                                            '3',
+                                            style: TextStyle(
+                                              color: _number == 3 ||
+                                                      _player ||
+                                                      _count < 3
+                                                  ? Colors.black
+                                                  : Colors.white,
+                                              fontSize: mathIconWidth() / 2,
+                                            ),
+                                          ),
+                                        )),
+                                  ),
+                                  SizedBox(
+                                    width: mathIconWidth(),
+                                    height: mathIconWidth(),
+                                    child: InkWell(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        onTap: _number == 4 ||
                                                 _player ||
                                                 _count < 4
-                                            ? Colors.black
-                                            : Colors.white,
-                                      ),
-                                    ),
-                                  )),
-                              InkWell(
-                                  borderRadius: BorderRadius.circular(100),
-                                  onTap: _number == 5 || _player || _count < 5
-                                      ? null
-                                      : () {
-                                          setState(() {
-                                            _count -= 5;
-                                            _number = 5;
-                                            _switch();
-                                          });
-                                        },
-                                  child: Padding(
-                                    padding: EdgeInsets.all(10),
-                                    child: Text(
-                                      '5',
-                                      style: TextStyle(
-                                        color: _number == 5 ||
+                                            ? null
+                                            : () {
+                                                setState(() {
+                                                  _count -= 4;
+                                                  _number = 4;
+                                                  _switch();
+                                                });
+                                              },
+                                        child: Center(
+                                          child: Text(
+                                            '4',
+                                            style: TextStyle(
+                                              color: _number == 4 ||
+                                                      _player ||
+                                                      _count < 4
+                                                  ? Colors.black
+                                                  : Colors.white,
+                                              fontSize: mathIconWidth() / 2,
+                                            ),
+                                          ),
+                                        )),
+                                  ),
+                                  SizedBox(
+                                    width: mathIconWidth(),
+                                    height: mathIconWidth(),
+                                    child: InkWell(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        onTap: _number == 5 ||
                                                 _player ||
                                                 _count < 5
-                                            ? Colors.black
-                                            : Colors.white,
-                                      ),
-                                    ),
-                                  )),
-                            ],
-                          )),
+                                            ? null
+                                            : () {
+                                                setState(() {
+                                                  _count -= 5;
+                                                  _number = 5;
+                                                  _switch();
+                                                });
+                                              },
+                                        child: Center(
+                                          child: Text(
+                                            '5',
+                                            style: TextStyle(
+                                              color: _number == 5 ||
+                                                      _player ||
+                                                      _count < 5
+                                                  ? Colors.black
+                                                  : Colors.white,
+                                              fontSize: mathIconWidth() / 2,
+                                            ),
+                                          ),
+                                        )),
+                                  )
+                                ],
+                              ))),
                       Expanded(
                           flex: 5,
                           child: Container(
@@ -187,125 +223,150 @@ class _Coin3PageState extends State<Coin3Page> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              InkWell(
-                                  borderRadius: BorderRadius.circular(100),
-                                  onTap: !_player || _count < 1 || _number == 1
-                                      ? null
-                                      : () {
-                                          setState(() {
-                                            _count -= 1;
-                                            _number = 1;
-                                            _switch();
-                                          });
-                                        },
-                                  child: Padding(
-                                    padding: EdgeInsets.all(10),
-                                    child: Text(
-                                      '1',
-                                      style: TextStyle(
-                                        color: !_player ||
-                                                _count < 1 ||
-                                                _number == 1
-                                            ? Colors.black
-                                            : Colors.white,
-                                      ),
-                                    ),
-                                  )),
-                              InkWell(
-                                  borderRadius: BorderRadius.circular(100),
-                                  onTap: _number == 2 || !_player || _count < 2
-                                      ? null
-                                      : () {
-                                          setState(() {
-                                            _count -= 2;
-                                            _number = 2;
-                                            _switch();
-                                          });
-                                        },
-                                  child: Padding(
-                                    padding: EdgeInsets.all(10),
-                                    child: Text(
-                                      '2',
-                                      style: TextStyle(
-                                        color: _number == 2 ||
-                                                !_player ||
-                                                _count < 2
-                                            ? Colors.black
-                                            : Colors.white,
-                                      ),
-                                    ),
-                                  )),
-                              InkWell(
-                                  borderRadius: BorderRadius.circular(100),
-                                  onTap: _number == 3 || !_player || _count < 3
-                                      ? null
-                                      : () {
-                                          setState(() {
-                                            _count -= 3;
-                                            _number = 3;
-                                            _switch();
-                                          });
-                                        },
-                                  child: Padding(
-                                    padding: EdgeInsets.all(10),
-                                    child: Text(
-                                      '3',
-                                      style: TextStyle(
-                                        color: _number == 3 ||
-                                                !_player ||
-                                                _count < 3
-                                            ? Colors.black
-                                            : Colors.white,
-                                      ),
-                                    ),
-                                  )),
-                              InkWell(
-                                  borderRadius: BorderRadius.circular(100),
-                                  onTap: _number == 4 || !_player || _count < 4
-                                      ? null
-                                      : () {
-                                          setState(() {
-                                            _count -= 4;
-                                            _number = 4;
-                                            _switch();
-                                          });
-                                        },
-                                  child: Padding(
-                                    padding: EdgeInsets.all(10),
-                                    child: Text(
-                                      '4',
-                                      style: TextStyle(
-                                        color: _number == 4 ||
-                                                !_player ||
-                                                _count < 4
-                                            ? Colors.black
-                                            : Colors.white,
-                                      ),
-                                    ),
-                                  )),
-                              InkWell(
-                                borderRadius: BorderRadius.circular(100),
-                                onTap: _number == 5 || !_player || _count < 5
-                                    ? null
-                                    : () {
-                                        setState(() {
-                                          _count -= 5;
-                                          _number = 5;
-                                          _switch();
-                                        });
-                                      },
-                                child: Padding(
-                                  padding: EdgeInsets.all(10),
-                                  child: Text(
-                                    '5',
-                                    style: TextStyle(
-                                      color:
-                                          _number == 5 || !_player || _count < 5
+                              SizedBox(
+                                width: mathIconWidth(),
+                                height: mathIconWidth(),
+                                child: InkWell(
+                                    borderRadius: BorderRadius.circular(100),
+                                    onTap:
+                                        !_player || _count < 1 || _number == 1
+                                            ? null
+                                            : () {
+                                                setState(() {
+                                                  _count -= 1;
+                                                  _number = 1;
+                                                  _switch();
+                                                });
+                                              },
+                                    child: Center(
+                                      child: Text(
+                                        '1',
+                                        style: TextStyle(
+                                          color: !_player ||
+                                                  _count < 1 ||
+                                                  _number == 1
                                               ? Colors.black
                                               : Colors.white,
-                                    ),
-                                  ),
-                                ),
+                                          fontSize: mathIconWidth() / 2,
+                                        ),
+                                      ),
+                                    )),
+                              ),
+                              SizedBox(
+                                width: mathIconWidth(),
+                                height: mathIconWidth(),
+                                child: InkWell(
+                                    borderRadius: BorderRadius.circular(100),
+                                    onTap:
+                                        _number == 2 || !_player || _count < 2
+                                            ? null
+                                            : () {
+                                                setState(() {
+                                                  _count -= 2;
+                                                  _number = 2;
+                                                  _switch();
+                                                });
+                                              },
+                                    child: Center(
+                                      child: Text(
+                                        '2',
+                                        style: TextStyle(
+                                          color: _number == 2 ||
+                                                  !_player ||
+                                                  _count < 2
+                                              ? Colors.black
+                                              : Colors.white,
+                                          fontSize: mathIconWidth() / 2,
+                                        ),
+                                      ),
+                                    )),
+                              ),
+                              SizedBox(
+                                width: mathIconWidth(),
+                                height: mathIconWidth(),
+                                child: InkWell(
+                                    borderRadius: BorderRadius.circular(100),
+                                    onTap:
+                                        _number == 3 || !_player || _count < 3
+                                            ? null
+                                            : () {
+                                                setState(() {
+                                                  _count -= 3;
+                                                  _number = 3;
+                                                  _switch();
+                                                });
+                                              },
+                                    child: Center(
+                                      child: Text(
+                                        '3',
+                                        style: TextStyle(
+                                          color: _number == 3 ||
+                                                  !_player ||
+                                                  _count < 3
+                                              ? Colors.black
+                                              : Colors.white,
+                                          fontSize: mathIconWidth() / 2,
+                                        ),
+                                      ),
+                                    )),
+                              ),
+                              SizedBox(
+                                width: mathIconWidth(),
+                                height: mathIconWidth(),
+                                child: InkWell(
+                                    borderRadius: BorderRadius.circular(100),
+                                    onTap:
+                                        _number == 4 || !_player || _count < 4
+                                            ? null
+                                            : () {
+                                                setState(() {
+                                                  _count -= 4;
+                                                  _number = 4;
+                                                  _switch();
+                                                });
+                                              },
+                                    child: Center(
+                                      child: Text(
+                                        '4',
+                                        style: TextStyle(
+                                          color: _number == 4 ||
+                                                  !_player ||
+                                                  _count < 4
+                                              ? Colors.black
+                                              : Colors.white,
+                                          fontSize: mathIconWidth() / 2,
+                                        ),
+                                      ),
+                                    )),
+                              ),
+                              SizedBox(
+                                width: mathIconWidth(),
+                                height: mathIconWidth(),
+                                child: InkWell(
+                                    borderRadius: BorderRadius.circular(100),
+                                    onTap:
+                                        _number == 5 || !_player || _count < 5
+                                            ? null
+                                            : () {
+                                                setState(() {
+                                                  _count -= 5;
+                                                  _number = 5;
+                                                  _switch();
+                                                });
+                                              },
+                                    child: Center(
+                                      child: Text(
+                                        '5',
+                                        style: TextStyle(
+                                          color: _number == 5 ||
+                                                  !_player ||
+                                                  _count < 5
+                                              ? Colors.black
+                                              : Colors.white,
+                                          fontSize: mathIconWidth() / 2,
+                                        ),
+                                      ),
+                                    )),
                               )
                             ],
                           )),
