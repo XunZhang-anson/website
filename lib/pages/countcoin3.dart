@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -17,6 +18,15 @@ class _Coin3PageState extends State<Coin3Page> {
   void initState() {
     super.initState();
     _startNewGame();
+    loadAssets();
+  }
+
+  void loadAssets() async {
+    Timer.periodic(Duration(seconds: 1), (timer) {
+    for (var i = 0; i <= 30; i++) {
+      precacheImage(AssetImage('assets/images/coin/coin$i.png'), context);
+    }
+    });
   }
 
   void _startNewGame() {
@@ -218,23 +228,6 @@ class _Coin3PageState extends State<Coin3Page> {
                           child: Container(
                               child: Image.network(
                             '/assets/assets/images/coin/coin$_count.png',
-                            loadingBuilder: (context, child, loadingProgress) {
-                              debugPrint('loadingProgress: $loadingProgress');
-                              debugPrint(
-                                  'expectedTotalBytes: ${loadingProgress?.expectedTotalBytes}');
-                              debugPrint(
-                                  'cumulativeBytesLoaded: ${loadingProgress?.cumulativeBytesLoaded}');
-                              if (loadingProgress == null) return child;
-                              return Center(
-                                child: CircularProgressIndicator(
-                                  value: loadingProgress.expectedTotalBytes !=
-                                          null
-                                      ? loadingProgress.cumulativeBytesLoaded /
-                                          loadingProgress.expectedTotalBytes!
-                                      : null,
-                                ),
-                              );
-                            },
                           ))),
                       Expanded(
                           flex: 0,
